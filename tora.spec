@@ -1,12 +1,14 @@
+# TODO:
+# - update .desktop
 Summary:	GUI for managing SQL databases
 Summary(pl):	GUI do zarz±dzania SQLowymi bazami danych
 Name:		tora
-Version:	1.3.14
-Release:	1
+Version:	1.3.14.1
+Release:	0.1
 License:	GPL
 Group:		Utilities
 Source0:	http://dl.sourceforge.net/tora/tora-alpha-%{version}.tar.gz	
-# Source0-md5:	0e7ed1ca994a7e61a7b7962138eaeb55
+# Source0-md5:	5560b5104438e1b71bd89386d0fcdc00
 Source1:	%{name}.desktop
 URL:		http://www.globecom.se/tora/
 BuildRequires:	kdelibs-devel
@@ -32,15 +34,17 @@ GUI do zarz±dzania SQLowymi bazami danych.
 	--with-qt-libs=/usr/lib \
 	--with-qt-moc=/usr/bin/moc \
 	--with-qt-uic=/usr/bin/uic \
-	--without-oracle
+	--without-oracle \
+	--with-gcc="%{__cc}" 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Utilities
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Utilities
+install -d $RPM_BUILD_ROOT%{_desktopdir}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
-%{__make} install ROOT=$RPM_BUILD_ROOT
+%{__make} install \
+	ROOT=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -50,4 +54,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc README BUGS NEWS TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
-%{_applnkdir}/Utilities/*
+%{_desktopdir}/*
