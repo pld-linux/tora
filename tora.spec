@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Utilities
 Source0:	http://dl.sourceforge.net/tora/tora-alpha-1.3.8.tar.gz
+# Source0-md5:	400231fde03379426ee6f316112c8823
 Source1:	%{name}.desktop
 URL:		http://www.globecom.se/tora/
 BuildRequires:	kdelibs-devel
