@@ -5,7 +5,7 @@ Summary(pl):	GUI do zarz±dzania SQLowymi bazami danych
 Name:		tora
 Version:	1.3.14.1
 Release:	0.2
-License:	GPL
+License:	GPL v2
 Group:		Utilities
 Source0:	http://dl.sourceforge.net/tora/tora-alpha-%{version}.tar.gz	
 # Source0-md5:	5560b5104438e1b71bd89386d0fcdc00
