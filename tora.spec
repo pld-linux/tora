@@ -26,12 +26,12 @@ GUI do zarz±dzania SQLowymi bazami danych.
 ./configure \
 	--prefix=%{_prefix} \
 	--prefix-lib=%{_datadir} \
-	--with-kde-include=/usr/X11R6/include \
-	--with-kde-libs=/usr/X11R6/lib \
-	--with-qt-include=/usr/X11R6/include/qt \
-	--with-qt-libs=/usr/X11R6/lib \
-	--with-qt-moc=/usr/X11R6/bin/moc \
-	--with-qt-uic=/usr/X11R6/bin/uic \
+	--with-kde-include=/usr/include \
+	--with-kde-libs=/usr/lib \
+	--with-qt-include=/usr/include/qt \
+	--with-qt-libs=/usr/lib \
+	--with-qt-moc=/usr/bin/moc \
+	--with-qt-uic=/usr/bin/uic \
 	--without-oracle
 %{__make}
 
