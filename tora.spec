@@ -5,13 +5,12 @@ Version:	1.3.8
 Release:	1
 License:	GPL
 Group:		Utilities
-Source0:	http://prdownloads.sourceforge.net/tora/tora-alpha-1.3.8.tar.gz
+Source0:	http://dl.sourceforge.net/tora/tora-alpha-1.3.8.tar.gz
 Source1:	%{name}.desktop
 URL:		http://www.globecom.se/tora/
-BuildRequires:	qt-devel
 BuildRequires:	kdelibs-devel
+BuildRequires:	qt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 GUI for managing SQL databases.
