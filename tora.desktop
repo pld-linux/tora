@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=TOra
+Comment=Toolkit For Oracle
+Exec=tora
+Terminal=0
+Type=Application
+# vi: encoding=utf-8
