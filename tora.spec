@@ -1,12 +1,12 @@
 Summary:	GUI for managing SQL databases
 Summary(pl):	GUI do zarz±dzania SQLowymi bazami danych
 Name:		tora
-Version:	1.3.12
+Version:	1.3.13
 Release:	1
 License:	GPL
 Group:		Utilities
 Source0:	http://dl.sourceforge.net/tora/tora-alpha-%{version}.tar.gz	
-# Source0-md5:	25f2f2bec72d1dad0b97c06d07cc287c
+# Source0-md5:	6dc6b22ad58e7baf6673e0f2e69b59ef
 Source1:	%{name}.desktop
 URL:		http://www.globecom.se/tora/
 BuildRequires:	kdelibs-devel
