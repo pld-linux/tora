@@ -1,8 +1,12 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=TOra
-Comment=Toolkit For Oracle
+Name[pl]=TOra
+Comment=Toolkit For Oracle and other databases
+Comment[pl]=Zestaw narzędzi dla Oracle i innych baz danych
+Icon=tora.xpm
 Exec=tora
-Terminal=false
+Terminal=0
 Type=Application
+Categories=Qt;KDE;Development;
 # vi: encoding=utf-8
