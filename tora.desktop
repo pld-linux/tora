@@ -2,6 +2,6 @@
 Name=TOra
 Comment=Toolkit For Oracle
 Exec=tora
-Terminal=0
+Terminal=false
 Type=Application
 # vi: encoding=utf-8
