@@ -6,7 +6,7 @@ Name:		tora
 Version:	1.3.14.1
 Release:	0.2
 License:	GPL v2
-Group:		Utilities
+Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/tora/tora-alpha-%{version}.tar.gz	
 # Source0-md5:	5560b5104438e1b71bd89386d0fcdc00
 Source1:	%{name}.desktop
