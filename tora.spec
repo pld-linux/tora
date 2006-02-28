@@ -5,7 +5,7 @@ Version:	1.3.14.1
 Release:	0.3
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
-Source0:	http://dl.sourceforge.net/tora/%{name}-alpha-%{version}.tar.gz	
+Source0:	http://dl.sourceforge.net/tora/%{name}-alpha-%{version}.tar.gz
 # Source0-md5:	5560b5104438e1b71bd89386d0fcdc00
 Source1:	%{name}.desktop
 URL:		http://www.globecom.se/tora/
@@ -43,7 +43,7 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	ROOT=$RPM_BUILD_ROOT
-	
+
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install icons/tora.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
 
