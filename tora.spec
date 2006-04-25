@@ -40,7 +40,7 @@ Any other database systems can be accessed via ODBC.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
-	$RPM_BUILD_ROOT%{_datadir}/%{name}/help/{images,api}
+	$RPM_BUILD_ROOT%{_libdir}/%{name}/help/{images,api}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
