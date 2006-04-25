@@ -12,6 +12,10 @@ URL:		http://www.globecom.se/tora/
 BuildRequires:	kdelibs-devel
 BuildRequires:	qt-devel
 BuildRequires:	qt-linguist
+BuildRequires:	mono-devel
+BuildRequires:	qscintilla-devel
+BuildRequires:	pcre-devel
+BuildRequires:	cppunit-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,17 +28,9 @@ GUI do zarz±dzania SQLowymi bazami danych.
 %setup -q
 
 %build
-./configure \
-	--prefix=%{_prefix} \
-	--prefix-lib=%{_datadir} \
-	--with-kde-include=%{_includedir} \
-	--with-kde-libs=%{_libdir} \
-	--with-qt-include=%{_includedir}/qt \
-	--with-qt-libs=%{_libdir} \
-	--with-qt-moc=%{_bindir}/moc \
-	--with-qt-uic=%{_bindir}/uic \
-	--without-oracle \
-	--with-gcc="%{__cc}"
+%configure \
+	--with-oracle
+
 %{__make}
 
 %install
@@ -42,7 +38,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
-	ROOT=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install icons/tora.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -54,6 +50,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc BUGS NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
+%{_libdir}/lib*.so.*.*.*
 %{_desktopdir}/*
 %{_pixmapsdir}/*
