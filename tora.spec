@@ -32,6 +32,12 @@ GUI do zarz±dzania SQLowymi bazami danych.
 %patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+cp -f /usr/share/automake/config.sub .
 %configure \
 	%{?with_oracle:--with-oracle}%{?without_oracle:--without-oracle}
 
