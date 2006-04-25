@@ -62,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc BUGS NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
-%dir %{_datadir}/%{name}
+%dir %{_libdir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}/lib*.so
 %{_libdir}/%{name}/lib*.la
 # Needed?
