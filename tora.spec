@@ -12,7 +12,7 @@ Source0:	http://dl.sourceforge.net/tora/%{name}-%{version}.tar.gz
 # Source0-md5:	10e3c9944ffaca50de046e2c3e02eee4
 Source1:	%{name}.desktop
 Patch0:		%{name}-LDFLAGS.patch
-URL:		http://www.globecom.se/tora/
+URL:		http://tora.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRequires:	qt-devel
 BuildRequires:	qt-linguist
@@ -21,7 +21,7 @@ BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Tora features a schema browser, SQL worksheet, PL/SQL editor
+TOra features a schema browser, SQL worksheet, PL/SQL editor
 and debugger, storage manager, rollback segment monitor,
 instance manager, and SQL output viewer.
 Via qt3 it can access PostgreSQL and MySQL directly.
