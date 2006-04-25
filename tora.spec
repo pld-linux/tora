@@ -50,13 +50,20 @@ cp -f /usr/share/automake/config.sub .
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_datadir}/%{name}/help}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install icons/tora.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
+
+install help/*.html $RPM_BUILD_ROOT%{_datadir}/%{name}/help/
+install help/images/*.png $RPM_BUILD_ROOT%{_datadir}/%{name}/help/images/
+install help/api/*.html $RPM_BUILD_ROOT%{_datadir}/%{name}/help/api/
+
+install *.qm $RPM_BUILD_ROOT%{_datadir}/%{name}/
+install templates/*.tpl $RPM_BUILD_ROOT%{_datadir}/%{name}/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -66,5 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc BUGS NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/lib*.so.*.*.*
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/*
 %{_desktopdir}/*
 %{_pixmapsdir}/*
