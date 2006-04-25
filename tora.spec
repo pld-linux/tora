@@ -18,10 +18,6 @@ BuildRequires:	qt-devel
 BuildRequires:	qt-linguist
 BuildRequires:	qscintilla-devel
 BuildRequires:	pcre-devel
-BuildRequires:	cppunit-devel
-BuildRequires:	docbook-xml >= 4.2
-BuildRequires:	xsltproc
-BuildRequires:	docbook-xsl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
