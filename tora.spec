@@ -10,6 +10,7 @@ Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/tora/%{name}-%{version}.tar.gz
 # Source0-md5:	10e3c9944ffaca50de046e2c3e02eee4
 Source1:	%{name}.desktop
+Patch0:		%{name}-LDFLAGS.patch
 URL:		http://www.globecom.se/tora/
 BuildRequires:	kdelibs-devel
 BuildRequires:	qt-devel
@@ -28,6 +29,7 @@ GUI do zarz±dzania SQLowymi bazami danych.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
