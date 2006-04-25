@@ -1,3 +1,5 @@
+# Conditional build:
+%bcond_with	oracle		# build with oracle support
 Summary:	GUI for managing SQL databases
 Summary(pl):	GUI do zarz±dzania SQLowymi bazami danych
 Name:		tora
@@ -29,7 +31,7 @@ GUI do zarz±dzania SQLowymi bazami danych.
 
 %build
 %configure \
-	--with-oracle
+	%{?with_oracle:--with-oracle}%{?without_oracle:--without-oracle}
 
 %{__make}
 
