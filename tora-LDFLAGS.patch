@@ -1,0 +1,11 @@
+--- tora-1.3.21/Makefile.am~	2006-02-23 23:33:27.000000000 +0100
++++ tora-1.3.21/Makefile.am	2006-04-25 23:57:14.287963250 +0200
+@@ -548,7 +548,7 @@
+ lib_LTLIBRARIES = $(plugins)
+ endif
+ 
+-PFLAGS = -avoid-version -rpath $(libdir) -module -shared
++PFLAGS = -module -shared
+ 
+ libtoalert_la_LDFLAGS = $(PFLAGS)
+ libtoalert_la_SOURCES = toalert.cpp toalert.h
