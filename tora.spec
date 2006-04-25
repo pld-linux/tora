@@ -44,6 +44,9 @@ cp -f /usr/share/automake/config.sub .
 
 %{__make}
 
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
