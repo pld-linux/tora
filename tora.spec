@@ -16,7 +16,6 @@ URL:		http://www.globecom.se/tora/
 BuildRequires:	kdelibs-devel
 BuildRequires:	qt-devel
 BuildRequires:	qt-linguist
-BuildRequires:	mono-devel
 BuildRequires:	qscintilla-devel
 BuildRequires:	pcre-devel
 BuildRequires:	cppunit-devel
@@ -44,6 +43,7 @@ Any other database systems can be accessed via ODBC.
 %{__automake}
 cp -f /usr/share/automake/config.sub .
 %configure \
+	--enable-plugin \
 	%{?with_oracle:--with-oracle}%{?without_oracle:--without-oracle}
 
 %{__make}
