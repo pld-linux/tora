@@ -46,7 +46,8 @@ cp -f /usr/share/automake/config.sub .
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_datadir}/%{name}/help}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
+	$RPM_BUILD_ROOT%{_datadir}/%{name}/help/{images,api}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
