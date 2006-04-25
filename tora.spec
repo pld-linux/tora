@@ -1,7 +1,8 @@
+#
 # Conditional build:
 %bcond_with	oracle		# build with oracle support
-Summary:	GUI for managing SQL databases
-Summary(pl):	GUI do zarz±dzania SQLowymi bazami danych
+Summary:	A graphical toolkit for database developers and administrators
+Summary(pl):	Zestaf graficznych narzêdzi dla programistów i administratorów baz danych
 Name:		tora
 Version:	1.3.21
 Release:	0.1
@@ -19,13 +20,17 @@ BuildRequires:	mono-devel
 BuildRequires:	qscintilla-devel
 BuildRequires:	pcre-devel
 BuildRequires:	cppunit-devel
+BuildRequires:	docbook-xml >= 4.2
+BuildRequires:	xsltproc
+BuildRequires:	docbook-xsl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-GUI for managing SQL databases.
-
-%description -l pl
-GUI do zarz±dzania SQLowymi bazami danych.
+Tora features a schema browser, SQL worksheet, PL/SQL editor
+and debugger, storage manager, rollback segment monitor,
+instance manager, and SQL output viewer.
+Via qt3 it can access PostgreSQL and MySQL directly.
+Any other database systems can be accessed via ODBC.                                               
 
 %prep
 %setup -q
