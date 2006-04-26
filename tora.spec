@@ -5,12 +5,13 @@ Summary:	A graphical toolkit for database developers and administrators
 Summary(pl):	Zestaf graficznych narzêdzi dla programistów i administratorów baz danych
 Name:		tora
 Version:	1.3.21
-Release:	0.2
+Release:	0.3
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/tora/%{name}-%{version}.tar.gz
 # Source0-md5:	10e3c9944ffaca50de046e2c3e02eee4
 Source1:	%{name}.desktop
+Patch0:		%{name}-no-maximize.patch
 URL:		http://tora.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRequires:	qt-devel
@@ -28,6 +29,7 @@ Any other database systems can be accessed via ODBC.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
@@ -39,8 +41,7 @@ Any other database systems can be accessed via ODBC.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
-	$RPM_BUILD_ROOT%{_libdir}/%{name}/help/{images,api}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -48,9 +49,8 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install icons/tora.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
 
-install help/*.html $RPM_BUILD_ROOT%{_libdir}/%{name}/help/
-install help/images/*.png $RPM_BUILD_ROOT%{_libdir}/%{name}/help/images/
-install help/api/*.html $RPM_BUILD_ROOT%{_libdir}/%{name}/help/api/
+cp -a help $RPM_BUILD_ROOT%{_libdir}/%{name}/
+rm -rf $RPM_BUILD_ROOT%{_libdir}/%{name}/help/images/{.xvpics,.cvsignore}
 
 install *.qm $RPM_BUILD_ROOT%{_libdir}/%{name}/
 install templates/*.tpl $RPM_BUILD_ROOT%{_libdir}/%{name}/
