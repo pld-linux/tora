@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_with	oracle		# build with oracle support
+#
 Summary:	A graphical toolkit for database developers and administrators
 Summary(pl):	Zestaf graficznych narzêdzi dla programistów i administratorów baz danych
 Name:		tora
@@ -14,18 +15,24 @@ Source1:	%{name}.desktop
 Patch0:		%{name}-no-maximize.patch
 URL:		http://tora.sourceforge.net/
 BuildRequires:	kdelibs-devel
+BuildRequires:	pcre-devel
+BuildRequires:	qscintilla-devel
 BuildRequires:	qt-devel
 BuildRequires:	qt-linguist
-BuildRequires:	qscintilla-devel
-BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-TOra features a schema browser, SQL worksheet, PL/SQL editor
-and debugger, storage manager, rollback segment monitor,
-instance manager, and SQL output viewer.
-Via qt3 it can access PostgreSQL and MySQL directly.
-Any other database systems can be accessed via ODBC.                                               
+TOra features a schema browser, SQL worksheet, PL/SQL editor and
+debugger, storage manager, rollback segment monitor, instance manager,
+and SQL output viewer. Via qt3 it can access PostgreSQL and MySQL
+directly. Any other database systems can be accessed via ODBC.
+
+%description -l pl
+TOra zawiera przegl±darkê schematów, arkusz roboczy SQL, edytor i
+debugger PL/SQL, zarz±dcê danych, monitor segmentów wycofañ, zarz±dcê
+instancji i przegl±darkê wyj¶cia SQL. Poprzez qt3 mo¿e wspó³pracowaæ
+bezpo¶rednio z bazami PostgreSQL i MySQL. Inne systemy baz danych mog±
+byæ obs³ugiwane poprzez ODBC.
 
 %prep
 %setup -q
@@ -49,11 +56,11 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install icons/tora.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
 
-cp -a help $RPM_BUILD_ROOT%{_libdir}/%{name}/
+cp -a help $RPM_BUILD_ROOT%{_libdir}/%{name}
 rm -rf $RPM_BUILD_ROOT%{_libdir}/%{name}/help/images/{.xvpics,.cvsignore}
 
-install *.qm $RPM_BUILD_ROOT%{_libdir}/%{name}/
-install templates/*.tpl $RPM_BUILD_ROOT%{_libdir}/%{name}/
+install *.qm $RPM_BUILD_ROOT%{_libdir}/%{name}
+install templates/*.tpl $RPM_BUILD_ROOT%{_libdir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
