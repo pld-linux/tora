@@ -6,13 +6,14 @@ Summary:	A graphical toolkit for database developers and administrators
 Summary(pl):	Zestaf graficznych narzêdzi dla programistów i administratorów baz danych
 Name:		tora
 Version:	1.3.21
-Release:	0.3
+Release:	0.4
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/tora/%{name}-%{version}.tar.gz
 # Source0-md5:	10e3c9944ffaca50de046e2c3e02eee4
 Source1:	%{name}.desktop
 Patch0:		%{name}-no-maximize.patch
+Patch1:		%{name}-cpp.patch
 URL:		http://tora.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRequires:	pcre-devel
@@ -37,6 +38,7 @@ byæ obs³ugiwane poprzez ODBC.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure \
