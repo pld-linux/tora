@@ -3,7 +3,7 @@
 %bcond_with	oracle		# build with oracle support
 #
 Summary:	A graphical toolkit for database developers and administrators
-Summary(pl):	Zestaf graficznych narzêdzi dla programistów i administratorów baz danych
+Summary(pl):	Zestaw graficznych narzêdzi dla programistów i administratorów baz danych
 Name:		tora
 Version:	1.3.21
 Release:	0.4
