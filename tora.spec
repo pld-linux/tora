@@ -79,5 +79,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/help
 %{_libdir}/%{name}/*.tpl
 %{_libdir}/%{name}/*.qm
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
