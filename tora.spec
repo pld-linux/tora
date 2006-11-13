@@ -44,7 +44,7 @@ byæ obs³ugiwane poprzez ODBC.
 %configure \
 	--libdir=%{_libdir}/%{name} \
 	--enable-plugin \
-	%{?with_oracle:--with-oracle}%{?without_oracle:--without-oracle}
+	%{?with_oracle:--with-oracle}%{!?with_oracle:--without-oracle}
 
 %{__make}
 
