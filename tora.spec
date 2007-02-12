@@ -3,7 +3,7 @@
 %bcond_with	oracle		# build with oracle support
 #
 Summary:	A graphical toolkit for database developers and administrators
-Summary(pl):	Zestaw graficznych narzêdzi dla programistów i administratorów baz danych
+Summary(pl.UTF-8):   Zestaw graficznych narzÄ™dzi dla programistÃ³w i administratorÃ³w baz danych
 Name:		tora
 Version:	1.3.21
 Release:	0.4
@@ -28,12 +28,12 @@ debugger, storage manager, rollback segment monitor, instance manager,
 and SQL output viewer. Via qt3 it can access PostgreSQL and MySQL
 directly. Any other database systems can be accessed via ODBC.
 
-%description -l pl
-TOra zawiera przegl±darkê schematów, arkusz roboczy SQL, edytor i
-debugger PL/SQL, zarz±dcê danych, monitor segmentów wycofañ, zarz±dcê
-instancji i przegl±darkê wyj¶cia SQL. Poprzez qt3 mo¿e wspó³pracowaæ
-bezpo¶rednio z bazami PostgreSQL i MySQL. Inne systemy baz danych mog±
-byæ obs³ugiwane poprzez ODBC.
+%description -l pl.UTF-8
+TOra zawiera przeglÄ…darkÄ™ schematÃ³w, arkusz roboczy SQL, edytor i
+debugger PL/SQL, zarzÄ…dcÄ™ danych, monitor segmentÃ³w wycofaÅ„, zarzÄ…dcÄ™
+instancji i przeglÄ…darkÄ™ wyjÅ›cia SQL. Poprzez qt3 moÅ¼e wspÃ³Å‚pracowaÄ‡
+bezpoÅ›rednio z bazami PostgreSQL i MySQL. Inne systemy baz danych mogÄ…
+byÄ‡ obsÅ‚ugiwane poprzez ODBC.
 
 %prep
 %setup -q
