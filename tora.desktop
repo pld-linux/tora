@@ -1,10 +1,9 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=TOra
 Name[pl]=TOra
 Comment=Toolkit For Oracle and other databases
 Comment[pl]=Zestaw narzędzi dla Oracle i innych baz danych
-Icon=tora.xpm
+Icon=tora
 Exec=tora
 Terminal=false
 Type=Application
