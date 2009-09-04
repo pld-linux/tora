@@ -5,22 +5,27 @@
 Summary:	A graphical toolkit for database developers and administrators
 Summary(pl.UTF-8):	Zestaw graficznych narzędzi dla programistów i administratorów baz danych
 Name:		tora
-Version:	1.3.21
-Release:	0.4
+Version:	2.0.0
+Release:	0.1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/tora/%{name}-%{version}.tar.gz
-# Source0-md5:	10e3c9944ffaca50de046e2c3e02eee4
+# Source0-md5:	e90e0d3dbec98e89e9c292d603318003
 Source1:	%{name}.desktop
-Patch0:		%{name}-no-maximize.patch
-Patch1:		%{name}-cpp.patch
+Patch0:		%{name}-gcc4.patch
+Patch1:		%{name}-postgresql.patch
 URL:		http://tora.sourceforge.net/
-BuildRequires:	kdelibs-devel
 BuildRequires:	pcre-devel
-BuildRequires:	qscintilla-devel
-BuildRequires:	qt-devel
+BuildRequires:	postgresql-devel
+BuildRequires:	qscintilla2-devel
+BuildRequires:	qt-devel >= 4.3.0
 BuildRequires:	qt-linguist
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%if %{with oracle}
+# ORACLE_HOME is required for oracle
+%define _preserve_env %_preserve_env_base ORACLE_HOME
+%endif
 
 %description
 TOra features a schema browser, SQL worksheet, PL/SQL editor and
@@ -40,11 +45,16 @@ być obsługiwane poprzez ODBC.
 %patch0 -p1
 %patch1 -p1
 
+rm -f src/moc_*
+
 %build
+%{__libtoolize}
+%{__aclocal} -I config/m4
+%{__autoconf}
+%{__automake}
 %configure \
-	--libdir=%{_libdir}/%{name} \
-	--enable-plugin \
-	%{?with_oracle:--with-oracle}%{!?with_oracle:--without-oracle}
+	--libdir=%{_datadir}/%{name} \
+	%{!?with_oracle:--without-oracle}
 
 %{__make}
 
@@ -56,13 +66,8 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-install icons/tora.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
-
-cp -a help $RPM_BUILD_ROOT%{_libdir}/%{name}
-rm -rf $RPM_BUILD_ROOT%{_libdir}/%{name}/help/images/{.xvpics,.cvsignore}
-
-install *.qm $RPM_BUILD_ROOT%{_libdir}/%{name}
-install templates/*.tpl $RPM_BUILD_ROOT%{_libdir}/%{name}
+install src/icons/tora.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
+cp -a src/templates $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -71,13 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc BUGS NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
-%dir %{_libdir}/%{name}
-%attr(755,root,root) %{_libdir}/%{name}/lib*.so
-%{_libdir}/%{name}/lib*.la
-# Needed?
-%{_libdir}/%{name}/lib*.a
-%{_libdir}/%{name}/help
-%{_libdir}/%{name}/*.tpl
-%{_libdir}/%{name}/*.qm
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/help
+%{_datadir}/%{name}/templates
+%{_datadir}/%{name}/*.qm
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
