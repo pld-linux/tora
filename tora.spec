@@ -5,12 +5,12 @@
 Summary:	A graphical toolkit for database developers and administrators
 Summary(pl.UTF-8):	Zestaw graficznych narzędzi dla programistów i administratorów baz danych
 Name:		tora
-Version:	2.0.0
-Release:	1
+Version:	2.1.1
+Release:	0.1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/tora/%{name}-%{version}.tar.gz
-# Source0-md5:	e90e0d3dbec98e89e9c292d603318003
+# Source0-md5:	6a25c8f62a70f368f16126103d54be7d
 Source1:	%{name}.desktop
 Patch0:		%{name}-gcc4.patch
 Patch1:		%{name}-postgresql.patch
