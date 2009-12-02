@@ -80,3 +80,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/*.qm
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
+%{_infodir}/tora*
