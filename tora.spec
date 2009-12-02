@@ -12,8 +12,7 @@ Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/tora/%{name}-%{version}.tar.gz
 # Source0-md5:	6a25c8f62a70f368f16126103d54be7d
 Source1:	%{name}.desktop
-Patch0:		%{name}-gcc4.patch
-Patch1:		%{name}-postgresql.patch
+Patch0:		%{name}-postgresql.patch
 URL:		http://tora.sourceforge.net/
 BuildRequires:	pcre-devel
 BuildRequires:	postgresql-devel
@@ -43,7 +42,6 @@ być obsługiwane poprzez ODBC.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 rm -f src/moc_*
 
