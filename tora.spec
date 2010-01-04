@@ -20,6 +20,7 @@ BuildRequires:	postgresql-devel
 BuildRequires:	qscintilla2-devel
 BuildRequires:	qt-devel >= 4.3.0
 BuildRequires:	qt-linguist
+Suggests:	QtSql-pgsql
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %if %{with oracle}
