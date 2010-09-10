@@ -1,25 +1,34 @@
 #
 # Conditional build:
 %bcond_with	oracle		# build with oracle support
+%bcond_with	instantclient	# build oracle support with oracle-instantclient
 #
 Summary:	A graphical toolkit for database developers and administrators
 Summary(pl.UTF-8):	Zestaw graficznych narzędzi dla programistów i administratorów baz danych
 Name:		tora
-Version:	2.1.1
+Version:	2.1.2
 Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/tora/%{name}-%{version}.tar.gz
-# Source0-md5:	6a25c8f62a70f368f16126103d54be7d
+# Source0-md5:	2b49bbe9f4dc83ce33a22e888575ea73
 Source1:	%{name}.desktop
 Patch0:		%{name}-postgresql.patch
+Patch1:		%{name}-gcc.patch
 URL:		http://tora.sourceforge.net/
+BuildRequires:	QtCore-devel
+BuildRequires:	QtGui-devel
+BuildRequires:	QtSql-devel
+BuildRequires:	QtNetwork-devel
+BuildRequires:	QtXml-devel
 BuildRequires:	cppunit-devel
+%{?with_instantclient:BuildRequires:	oracle-instantclient-devel}
 BuildRequires:	pcre-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	qscintilla2-devel
-BuildRequires:	qt-devel >= 4.3.0
-BuildRequires:	qt-linguist
+BuildRequires:	qt4-build
+BuildRequires:	qt4-linguist
+BuildRequires:	xorg-lib-libICE-devel
 Suggests:	QtSql-pgsql
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,6 +53,7 @@ być obsługiwane poprzez ODBC.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 rm -f src/moc_*
 
@@ -54,7 +64,17 @@ rm -f src/moc_*
 %{__automake}
 %configure \
 	--libdir=%{_datadir}/%{name} \
-	%{!?with_oracle:--without-oracle}
+	--with-qt-libraries=%{_libdir} \
+%if %{with oracle}
+    %if %{with instantclient}
+	--with-instant-client \
+	--with-oracle-includes=%{_includedir}/oracle/client \
+	--with-oracle-libraries=%{_libdir} \
+    %endif
+	--with-oracle
+%else
+	--without-oracle
+%endif
 
 %{__make}
 
