@@ -1,0 +1,10 @@
+--- tora-2.1.3/src/Makefile.am~	2010-09-19 20:07:44.000000000 +0200
++++ tora-2.1.3/src/Makefile.am	2011-09-26 13:56:18.587738602 +0200
+@@ -316,6 +316,7 @@
+ BUILT_SOURCES = \
+ 	moc_toabout.cpp \
+ 	moc_toalert.cpp \
++	moc_toawr.cpp \
+ 	moc_toanalyze.cpp \
+ 	moc_tobackup.cpp \
+ 	moc_tobarchart.cpp \

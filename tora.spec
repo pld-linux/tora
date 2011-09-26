@@ -6,16 +6,16 @@
 Summary:	A graphical toolkit for database developers and administrators
 Summary(pl.UTF-8):	Zestaw graficznych narzędzi dla programistów i administratorów baz danych
 Name:		tora
-Version:	2.1.2
-Release:	4
+Version:	2.1.3
+Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://downloads.sourceforge.net/tora/%{name}-%{version}.tar.gz
-# Source0-md5:	2b49bbe9f4dc83ce33a22e888575ea73
+# Source0-md5:	ea4a75a9daeaf58492413e3f7fe40293
 Source1:	%{name}.desktop
 Patch0:		%{name}-postgresql.patch
 Patch1:		%{name}-gcc.patch
-Patch2:		%{name}-2.1.2-qt47.patch
+Patch2:		%{name}-build.patch
 URL:		http://tora.sourceforge.net/
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
