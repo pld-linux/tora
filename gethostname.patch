@@ -1,5 +1,5 @@
---- /home/users/baggins/rpm/BUILD/tora-2.1.3/src/toreport.cpp~	2010-01-14 17:39:02.000000000 +0100
-+++ /home/users/baggins/rpm/BUILD/tora-2.1.3/src/toreport.cpp	2013-07-14 14:40:34.485230193 +0200
+--- tora-2.1.3/src/toreport.cpp~	2010-01-14 17:39:02.000000000 +0100
++++ tora-2.1.3/src/toreport.cpp	2013-07-14 14:40:34.485230193 +0200
 @@ -47,6 +47,8 @@
  #include "toextract.h"
  #include "toreport.h"
@@ -9,3 +9,13 @@
  #include <qapplication.h>
  #include <qdatetime.h>
  #ifdef Q_OS_WIN32
+--- tora-2.1.3/src/toextract.cpp~	2010-02-02 19:25:43.000000000 +0100
++++ tora-2.1.3/src/toextract.cpp	2013-07-14 14:40:06.098262267 +0200
+@@ -46,6 +46,7 @@
+ #include "toextract.h"
+ 
+ #include <stdio.h>
++#include <unistd.h>
+ 
+ #include <qapplication.h>
+ #include <qlabel.h>
