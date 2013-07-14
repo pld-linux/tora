@@ -7,7 +7,7 @@ Summary:	A graphical toolkit for database developers and administrators
 Summary(pl.UTF-8):	Zestaw graficznych narzędzi dla programistów i administratorów baz danych
 Name:		tora
 Version:	2.1.3
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://downloads.sourceforge.net/tora/%{name}-%{version}.tar.gz
@@ -16,6 +16,7 @@ Source1:	%{name}.desktop
 Patch0:		%{name}-postgresql.patch
 Patch1:		%{name}-gcc.patch
 Patch2:		%{name}-build.patch
+Patch3:		gethostname.patch
 URL:		http://tora.sourceforge.net/
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
@@ -56,6 +57,7 @@ być obsługiwane poprzez ODBC.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 rm -f src/moc_*
 
