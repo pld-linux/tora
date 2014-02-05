@@ -2,12 +2,12 @@
 # Conditional build:
 %bcond_with	oracle		# build with oracle support
 %bcond_with	instantclient	# build oracle support with oracle-instantclient
-#
+
 Summary:	A graphical toolkit for database developers and administrators
 Summary(pl.UTF-8):	Zestaw graficznych narzędzi dla programistów i administratorów baz danych
 Name:		tora
 Version:	2.1.3
-Release:	5
+Release:	6
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://downloads.sourceforge.net/tora/%{name}-%{version}.tar.gz
@@ -70,11 +70,11 @@ rm -f src/moc_*
 	--libdir=%{_datadir}/%{name} \
 	--with-qt-libraries=%{_libdir} \
 %if %{with oracle}
-    %if %{with instantclient}
+	%if %{with instantclient}
 	--with-instant-client \
 	--with-oracle-includes=%{_includedir}/oracle/client \
 	--with-oracle-libraries=%{_libdir} \
-    %endif
+	%endif
 	--with-oracle
 %else
 	--without-oracle
@@ -85,16 +85,21 @@ rm -f src/moc_*
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-install src/icons/tora.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+cp -p src/icons/tora.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
 cp -a src/templates $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/postshell
+-/usr/sbin/fix-info-dir -c %{_infodir}
+
+%postun	-p /sbin/postshell
+-/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
 %defattr(644,root,root,755)
@@ -105,5 +110,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/templates
 %{_datadir}/%{name}/*.qm
 %{_desktopdir}/*.desktop
-%{_pixmapsdir}/*
+%{_pixmapsdir}/*.xpm
 %{_infodir}/tora*
