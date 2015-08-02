@@ -27,7 +27,7 @@ BuildRequires:	cppunit-devel
 %{?with_instantclient:BuildRequires:	oracle-instantclient-devel}
 BuildRequires:	pcre-devel
 BuildRequires:	postgresql-devel
-BuildRequires:	qscintilla2-devel
+BuildRequires:	qscintilla2-qt4-devel
 BuildRequires:	qt4-build
 BuildRequires:	qt4-linguist
 BuildRequires:	xorg-lib-libICE-devel
