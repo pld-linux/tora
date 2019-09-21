@@ -1,0 +1,20 @@
+--- tora-2.1.3/config/m4/qtkde.m4~	2009-10-23 18:19:57.000000000 +0200
++++ tora-2.1.3/config/m4/qtkde.m4	2019-09-21 14:31:04.023094843 +0200
+@@ -112,7 +112,7 @@
+     @LIB_DCOP@ \
+     @LIB_KHTML@ \
+     $scin_ldflags"
+-  LIBS="-lqscintilla2"
++  LIBS="-lqscintilla2_qt4"
+ 
+   AC_LANG_PUSH(C++)
+ 
+@@ -148,7 +148,7 @@
+ 
+   AC_DEFINE_UNQUOTED(QSCINTILLA_DLL, 1, [True if on Windows.])
+   AC_SUBST(QSCINTILLA_CXXFLAGS, $scin_cflags)
+-  AC_SUBST(QSCINTILLA_LDFLAGS, "$scin_ldflags -lqscintilla2")
++  AC_SUBST(QSCINTILLA_LDFLAGS, "$scin_ldflags -lqscintilla2_qt4")
+   AC_MSG_RESULT(yes)
+ ])
+ 
