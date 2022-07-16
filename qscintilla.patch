@@ -1,20 +1,11 @@
---- tora-2.1.3/config/m4/qtkde.m4~	2009-10-23 18:19:57.000000000 +0200
-+++ tora-2.1.3/config/m4/qtkde.m4	2019-09-21 14:31:04.023094843 +0200
-@@ -112,7 +112,7 @@
-     @LIB_DCOP@ \
-     @LIB_KHTML@ \
-     $scin_ldflags"
--  LIBS="-lqscintilla2"
-+  LIBS="-lqscintilla2_qt4"
+--- tora-3.2/cmake/modules/FindQScintilla.cmake~	2017-07-04 23:35:39.000000000 +0200
++++ tora-3.2/cmake/modules/FindQScintilla.cmake	2022-07-16 08:17:16.878361755 +0200
+@@ -84,7 +84,7 @@
+     SET(LIBRARYPATH ${QT5_WIDGETSLIBRARYPATH} "/usr/lib/" "/usr/local/lib")
+     MESSAGE("QScintilla2 LIBPATH \"${LIBRARYPATH}\"")
  
-   AC_LANG_PUSH(C++)
+-    FIND_LIBRARY(QSCINTILLA_LIBRARY NAMES qscintilla2-qt5 qt5scintilla2 libqscintilla2.so libqscintilla2.a qscintilla2.lib PATHS ${LIBRARYPATH})
++    FIND_LIBRARY(QSCINTILLA_LIBRARY NAMES qscintilla2_qt5 qscintilla2-qt5 qt5scintilla2 libqscintilla2.so libqscintilla2.a qscintilla2.lib PATHS ${LIBRARYPATH})
  
-@@ -148,7 +148,7 @@
- 
-   AC_DEFINE_UNQUOTED(QSCINTILLA_DLL, 1, [True if on Windows.])
-   AC_SUBST(QSCINTILLA_CXXFLAGS, $scin_cflags)
--  AC_SUBST(QSCINTILLA_LDFLAGS, "$scin_ldflags -lqscintilla2")
-+  AC_SUBST(QSCINTILLA_LDFLAGS, "$scin_ldflags -lqscintilla2_qt4")
-   AC_MSG_RESULT(yes)
- ])
- 
+     # Check
+     IF(QSCINTILLA_LIBRARY)

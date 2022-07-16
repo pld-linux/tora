@@ -6,31 +6,30 @@
 Summary:	A graphical toolkit for database developers and administrators
 Summary(pl.UTF-8):	Zestaw graficznych narzędzi dla programistów i administratorów baz danych
 Name:		tora
-Version:	2.1.3
-Release:	10
+Version:	3.2
+Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
-Source0:	http://downloads.sourceforge.net/tora/%{name}-%{version}.tar.gz
-# Source0-md5:	ea4a75a9daeaf58492413e3f7fe40293
-Source1:	%{name}.desktop
-Patch0:		%{name}-postgresql.patch
-Patch1:		%{name}-gcc.patch
-Patch2:		%{name}-build.patch
-Patch3:		gethostname.patch
-Patch4:		qscintilla.patch
-URL:		http://tora.sourceforge.net/
-BuildRequires:	QtCore-devel
-BuildRequires:	QtGui-devel
-BuildRequires:	QtNetwork-devel
-BuildRequires:	QtSql-devel
-BuildRequires:	QtXml-devel
+Source0:	https://github.com/tora-tool/tora/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	9a08df5eb9ca8a8c26d05540fc57d103
+Patch0:		qscintilla.patch
+Patch1:		qt-5.11.0.patch
+Patch2:		missing-header.patch
+Patch3:		i18n.patch
+URL:		https://github.com/tora-tool/tora
+BuildRequires:	Qt5Core-devel
+BuildRequires:	Qt5Gui-devel
+BuildRequires:	Qt5Network-devel
+BuildRequires:	Qt5Sql-devel
+BuildRequires:	Qt5Xml-devel
 BuildRequires:	cppunit-devel
+BuildRequires:	loki-devel
 %{?with_instantclient:BuildRequires:	oracle-instantclient-devel}
 BuildRequires:	pcre-devel
 BuildRequires:	postgresql-devel
-BuildRequires:	qscintilla2-qt4-devel
-BuildRequires:	qt4-build
-BuildRequires:	qt4-linguist
+BuildRequires:	qscintilla2-qt5-devel
+BuildRequires:	qt5-build
+BuildRequires:	qt5-linguist
 BuildRequires:	texinfo
 BuildRequires:	xorg-lib-libICE-devel
 Suggests:	QtSql-pgsql
@@ -60,27 +59,19 @@ być obsługiwane poprzez ODBC.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-
-rm -f src/moc_*
 
 %build
-%{__libtoolize}
-%{__aclocal} -I config/m4
-%{__autoconf}
-%{__automake}
-%configure \
-	--libdir=%{_datadir}/%{name} \
-	--with-qt-libraries=%{_libdir} \
+mkdir -p build
+cd build
+%cmake ../ \
 %if %{with oracle}
-	%if %{with instantclient}
-	--with-instant-client \
-	--with-oracle-includes=%{_includedir}/oracle/client \
-	--with-oracle-libraries=%{_libdir} \
-	%endif
-	--with-oracle
+	-DENABLE_ORACLE=ON \
+%if %{with instantclient}
+	-DORACLE_PATH_INCLUDES=%{_includedir}/oracle/client \
+	-DORACLE_PATH_LIB=%{_libdir} \
+%endif
 %else
-	--without-oracle
+	-DENABLE_ORACLE=OFF \
 %endif
 
 %{__make}
@@ -88,30 +79,20 @@ rm -f src/moc_*
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
-%{__make} install \
+
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 cp -p src/icons/tora.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
 cp -a src/templates $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/postshell
--/usr/sbin/fix-info-dir -c %{_infodir}
-
-%postun	-p /sbin/postshell
--/usr/sbin/fix-info-dir -c %{_infodir}
-
 %files
 %defattr(644,root,root,755)
-%doc BUGS NEWS README TODO
+%doc NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/help
-%{_datadir}/%{name}/templates
-%{_datadir}/%{name}/*.qm
+%{_datadir}/%{name}
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*.xpm
-%{_infodir}/tora*
